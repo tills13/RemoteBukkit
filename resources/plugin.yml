@@ -1,0 +1,12 @@
+name: Remote Bukkit
+main: com.jseb.remotebukkit.RemoteBukkit
+version: 1.0
+author: tills13
+
+commands:
+  rb:
+    description: 
+    usage: /<command> [connected | stop | restart]
+  rba:
+    description: 
+    usage: /<command> [message]

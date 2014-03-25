@@ -1,0 +1,28 @@
+<project name="RemoteBukkit" default="dist" basedir=".">
+  <property name="src" location="java"/>
+  <property name="build" location="build"/>
+  <property name="testbuild" location="testing/build"/>
+  <property name="dist"  location="dist"/>
+  <property name="rsc"  location="resources"/>
+  <property name="test" location="testing"/>
+
+  <target name="init">
+    <mkdir dir="${build}"/>
+    <mkdir dir="${testbuild}"/>
+  </target>
+
+  <target name="compile" depends="init" description="compile the source " >
+    <javac srcdir="${src}" destdir="${build}"/>
+    <javac srcdir="${test}" destdir="${testbuild}"/>
+  </target>
+
+  <target name="move" depends="compile" description="moves files into place" >
+    <copy file="${rsc}/plugin.yml" todir="${build}"/>
+    <copy file="${rsc}/admin_mail.yml" todir="${build}"/>
+  </target>
+
+  <target name="dist" depends="compile,move" description="generate the distribution" >
+    <mkdir dir="${dist}"/>
+    <jar jarfile="${dist}/RemoteBukkit.jar" basedir="${build}"/>
+  </target>
+</project>
